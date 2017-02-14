@@ -10,8 +10,22 @@
 
     $app['debug'] = true;
 
-    $app->get('/', function() {
-        return "hello";
+    $app->register(
+            new Silex\Provider\TwigServiceProvider(), array('twig.path'=>__DIR__.'/../views'));
+
+    $app->get('/', function() use ($app){
+
+        return $app ['twig']->render('home.html.twig');
+    });
+
+    $app->get('/anagram_list', function() use ($app){
+        $word_one = $_GET['word_one'];
+        $word_list = $_GET['word_list'];
+
+        $anagram_comparison = new Compare($word_one, $word_list);
+
+        $new_comparison= $anagram_comparison->anagramCompare($word_one, $word_list);
+        return $app ['twig']->render('anagram_list.html.twig', array('word_one' => $word_one, 'new_comparison' => $new_comparison));
     });
 
 

@@ -1,8 +1,18 @@
 <?php
     class Compare
     {
+        private $first_word;
+        private $word_list;
+
+        function __construct($first_word, $word_list)
+        {
+            $this->first_word = $first_word;
+            $this->word_list = explode(", ", $word_list);
+        }
+
         function anagramCompare($first_word, $word_list)
         {
+            $word_list = explode(", ", $word_list);
             $results = array();
             $countCharacters = array_count_values(str_split($first_word));
             $regExPattern = '/[' . $first_word . ']/i';

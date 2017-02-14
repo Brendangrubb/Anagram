@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css">
+    <title>Anagram Tester</title>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Anagram Tester!</h1>
+        <p>Type in a word and then some other words, we'll let you know which of them are anagrams!</p>
+      </header>
+
+      <h4>Here is a list of anagrams for the word {{word_one}}</h4>
+      <ul>
+        {% for comparison in new_comparison %}
+        <li>{{comparison}}</li>
+        {% endfor %}
+      </ul>
+
+
+      <h5><a href="/">Check another anagram</a></h5>
+
+    </div>
+  </body>
+</html>
