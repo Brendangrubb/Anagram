@@ -16,5 +16,19 @@
             //assert
             $this->assertEquals(array("arms"), $result);
         }
+
+        function test_anagramCompare_oneToMany()
+        {
+            //arrange
+            $comparison = new Compare;
+            $first_word = "pots";
+            $word_list = array("stop", "post", "tops" );
+
+            //act
+            $result = $comparison->anagramCompare($first_word, $word_list);
+
+            //assert
+            $this->assertEquals(array("stop", "post", "tops"), $result);
+        }
     }
 ?>
